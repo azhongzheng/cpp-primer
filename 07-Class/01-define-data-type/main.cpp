@@ -1,4 +1,4 @@
-#include "Sales_data.hpp"
+#include "Sales_data.h"
 #include <iostream>
 
 int main(int argc, char const *argv[])

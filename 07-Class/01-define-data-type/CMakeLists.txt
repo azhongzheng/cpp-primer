@@ -3,4 +3,4 @@ project(define_data_type)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(define_data_type main.cpp)
+add_executable(define_data_type main.cpp Sales_data.cpp)
