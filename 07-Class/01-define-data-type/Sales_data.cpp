@@ -31,8 +31,14 @@ std::ostream &print(std::ostream &os, const Sales_data &item)
     return os;
 }
 
-Sales_data add(const Sales_data &lhs, const Sales_data &rhs){
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
+{
     Sales_data sum = lhs;
     sum.combine(rhs);
     return sum;
+}
+
+Sales_data::Sales_data(std::istream &is)
+{
+    read(is, *this);
 }
