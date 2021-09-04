@@ -2,11 +2,11 @@
 #include <iostream>
 
 class Sales_data
-{ 
-//外部函数想要访问类中的私有变量和函数需要增加friend关键字
-friend Sales_data add(const Sales_data &, const Sales_data &);
-friend std::ostream &print(std::ostream &, const Sales_data &);
-friend std::istream &read(std::istream &, Sales_data &);
+{
+    //外部函数想要访问类中的私有变量和函数需要增加friend关键字
+    friend Sales_data add(const Sales_data &, const Sales_data &);
+    friend std::ostream &print(std::ostream &, const Sales_data &);
+    friend std::istream &read(std::istream &, Sales_data &);
 
 public:
     // add constructor
@@ -26,4 +26,3 @@ private:
 };
 
 //Sales_data 非成员接口函数
-

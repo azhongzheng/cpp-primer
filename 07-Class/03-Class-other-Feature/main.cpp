@@ -1,4 +1,5 @@
 #include "Screen.h"
+#include "Window_mgr.h"
 #include <iostream>
 
 int main(int argc, char const *argv[])

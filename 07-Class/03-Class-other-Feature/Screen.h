@@ -1,8 +1,16 @@
+#ifndef SCREEN_H
+#define SCREEN_H
 #include <string>
 #include <iostream>
 
+
 class Screen
-{
+{   
+    // 声明类中的成员函数为友元
+    // friend void Window_mgr::clear(ScreenIndex i);
+    // 声明类为友元
+    friend class Window_mgr;
+
 public:
     typedef std::string::size_type pos;
     Screen() = default;
@@ -70,3 +78,5 @@ inline Screen &Screen::set(pos r, pos col, char ch)
     contents[r * width + col] = ch;
     return *this;
 }
+
+#endif
