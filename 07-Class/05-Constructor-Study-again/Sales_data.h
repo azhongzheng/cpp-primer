@@ -1,3 +1,5 @@
+#ifndef SALES_DATA_H
+#define SALES_DATA_H
 #include <string>
 #include <iostream>
 
@@ -19,8 +21,10 @@ public:
 
     // 委托构造函数
     Sales_data() : Sales_data("", 0, 0) { std::cout << "Sales_data()\n"; }
-    Sales_data(std::string s) : Sales_data(s, 0, 0) { std::cout << "Sales_data(std::string s)\n"; }
-    Sales_data(std::istream &is) : Sales_data() { read(is, *this); }
+
+    // explicit 只能用于构造函数，指明了传参只能显式传参, 只对一个参数的构造函数有效
+    explicit Sales_data(std::string s) : Sales_data(s, 0, 0) { std::cout << "Sales_data(std::string s)\n"; }
+    explicit Sales_data(std::istream &is) : Sales_data() { read(is, *this); }
 
     std::string isbn() const { return bookNo; }
     Sales_data &combine(const Sales_data &);
@@ -33,3 +37,5 @@ private:
 };
 
 //Sales_data 非成员接口函数
+
+#endif
