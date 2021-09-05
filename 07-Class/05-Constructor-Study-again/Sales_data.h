@@ -10,10 +10,17 @@ class Sales_data
 
 public:
     // add constructor
-    Sales_data() = default;
-    Sales_data(const std::string &s) : bookNo(s) {}
-    Sales_data(const std::string &s, unsigned n, double p) : bookNo(s), units_sold(n), revenue(p * n) {}
-    Sales_data(std::istream &is);
+    // Sales_data() = default;
+    // Sales_data(const std::string &s) : bookNo(s) {}
+    Sales_data(const std::string &s, unsigned cnt, double price) : bookNo(s), units_sold(cnt), revenue(price * cnt)
+    {
+        std::cout << "constructor: Sales_data(const std::string &s, unsigned cnt, double price)\n";
+    }
+
+    // 委托构造函数
+    Sales_data() : Sales_data("", 0, 0) { std::cout << "Sales_data()\n"; }
+    Sales_data(std::string s) : Sales_data(s, 0, 0) { std::cout << "Sales_data(std::string s)\n"; }
+    Sales_data(std::istream &is) : Sales_data() { read(is, *this); }
 
     std::string isbn() const { return bookNo; }
     Sales_data &combine(const Sales_data &);
