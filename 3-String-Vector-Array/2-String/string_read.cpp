@@ -22,11 +22,19 @@ void test3()
     while (getline(std::cin, line))
         std::cout << line << "\n";
 }
+void test4()
+{
+    std::string line;
+    while (getline(std::cin, line))
+        if(!line.empty())
+            std::cout << line << "\n";
+}
 
 int main(int argc, char const *argv[])
 {
     // test1();
     // test2();
-    test3();
+    // test3();
+    test4();
     return 0;
 }
