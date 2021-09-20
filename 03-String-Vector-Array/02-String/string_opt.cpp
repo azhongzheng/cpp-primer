@@ -5,6 +5,7 @@
 
 void test1()
 {
+    //string 输入到字符流
     std::stringstream os;
 
     std::string s = "hello world";
@@ -27,12 +28,14 @@ void test1()
 
 void test2()
 {
+    // string 计算长度
     std::string::size_type a;
     auto len = std::string("10").size();
 }
 
 void test3()
 {
+    // string的比较
     std::string str = "Hello";
     std::string phrase = "Hello world";
     std::string slang = "Hiya";
@@ -40,6 +43,7 @@ void test3()
 }
 void test4()
 {
+    // string的拼接
     std::string st1(10, 'c'), st2;
     st1 = st2;
     std::string s1 = "hello", s2 = "world";
@@ -49,7 +53,6 @@ void test4()
     // std::string s5 = "hello" + ", "; // 不能把字面值直接相加
     std::string s6 = s1 + ", " + "world" + "hello";
     // std::string s7 = "hello" + ", " + s2;
-    
 }
 
 int main(int argc, char const *argv[])

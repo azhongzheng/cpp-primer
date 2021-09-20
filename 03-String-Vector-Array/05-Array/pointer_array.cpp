@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -42,14 +43,22 @@ void test2()
 void test3()
 {
     int ia[] = {0, 2, 4, 6, 8};
-    int last = *(ia+4);
+    int last = *(ia + 4);
 }
 
+void test4()
+{
+    // 使用数组初始化vector
+    int ia[] = {0, 2, 4, 6, 8};
+    vector<int> vec(begin(ia), end(ia));
 
+    for (int i : vec)
+        cout << i << " ";
+}
 
 int main(int argc, char const *argv[])
 {
     /* code */
-    test3();
+    test4();
     return 0;
 }
