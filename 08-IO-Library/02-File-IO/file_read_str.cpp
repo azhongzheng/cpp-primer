@@ -16,7 +16,7 @@ void test1()
 
 void test2()
 {
-    // 按行读取文件 按单词读取文件
+    // 按单词读取文件
     ifstream ifs;
     vector<string> vec;
     ifs.open("Pride and Prejudice.txt");
