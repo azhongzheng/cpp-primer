@@ -46,6 +46,7 @@ void test3()
 
     // string to char*
     const char *str = s.c_str();
+    str = s.data();
     cout << "str value: " << str << "\n";
 
     // char* to string
