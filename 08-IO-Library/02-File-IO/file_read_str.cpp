@@ -1,4 +1,5 @@
 #include <fstream>
+#include <sstream>
 #include <iostream>
 #include <vector>
 
@@ -57,10 +58,21 @@ void test3()
     for (auto word : vec)
         cout << word << " length: " << word.size() << '\n';
 }
+
+void test4(){
+    // 一次性读取整个文件
+    ifstream fin;
+    fin.open("Pride and Prejudice.txt", ios::in);
+    stringstream buf;
+    buf << fin.rdbuf(); 
+    string str = buf.str();
+    cout << str << "\n";
+}
+
 int main(int argc, char const *argv[])
 {
 
-    test2();
+    test4();
 
     return 0;
 }
