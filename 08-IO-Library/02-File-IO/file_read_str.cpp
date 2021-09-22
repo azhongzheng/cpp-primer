@@ -50,7 +50,8 @@ void test3()
     vector<string> vec;
     ifs.open("Pride and Prejudice.txt"); //文件地址，注意转义符
     string str;
-    while (getline(ifs, str, '\n')) // 默认按行读取
+    char delim = ' ';
+    while (getline(ifs, str, delim)) // 默认按行读取
     {
         vec.push_back(str);
     }
@@ -85,10 +86,21 @@ void test5()
     cout << str << "\n";
 }
 
+void test6()
+{
+    //
+    ifstream fin("Pride and Prejudice.txt");
+    char buf[1000];
+    while (fin.getline(buf, sizeof(buf)))
+    {
+        std::cout << buf << "xxxxxx\n";
+    }
+}
+
 int main(int argc, char const *argv[])
 {
 
-    test5();
+    test6();
 
     return 0;
 }
