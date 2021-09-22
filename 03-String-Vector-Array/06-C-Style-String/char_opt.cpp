@@ -57,7 +57,6 @@ void test3()
 
 int main(int argc, char const *argv[])
 {
-    /* code */
     test3();
     return 0;
 }
