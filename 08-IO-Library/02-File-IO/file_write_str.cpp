@@ -9,7 +9,7 @@ using namespace std;
 void test1(){
     ofstream out("test_write.txt");
     out<< "hello world";
-    out.close()
+    out.close();
 }
 
 int main(int argc, char const *argv[])
