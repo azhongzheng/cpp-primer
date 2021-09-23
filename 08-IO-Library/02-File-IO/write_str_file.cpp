@@ -7,7 +7,7 @@ using namespace std;
 
 
 void test1(){
-    ofstream out("test_write.txt");
+    ofstream out("write_test.txt");
     out<< "hello world";
     out.close();
 }
