@@ -7,14 +7,14 @@ using namespace std;
 
 void test1()
 {
-    ofstream out("write_test.txt");
+    ofstream out("test_write.txt");
     out << "hello world";
     out.close();
 }
 
 void test2()
 {
-    ofstream out("write_test_app.txt", ios::app);
+    ofstream out("test_app.txt", ios::app);
     for (auto i : {1, 2, 3})
         out << " " << i;
     out.close();
@@ -22,7 +22,7 @@ void test2()
 
 void test3()
 {
-    ofstream out("write_test_app.txt", ios::out);
+    ofstream out("test_app.txt", ios::out);
     for (auto i : {1, 2, 3, 4}){
         out << " " << i;
     }
