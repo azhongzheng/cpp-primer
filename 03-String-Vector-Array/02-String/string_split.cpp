@@ -56,6 +56,7 @@ void split3(const std::string &str, std::vector<std::string> &tokens, const char
 
 void split4(const std::string &str, std::vector<std::string> &tokens, const std::string delim)
 {
+    // 正则表达式分割
     std::regex pattern(delim);
     tokens.clear();
     std::vector<std::string> v(std::sregex_token_iterator(str.begin(), str.end(), pattern, -1), std::sregex_token_iterator());
