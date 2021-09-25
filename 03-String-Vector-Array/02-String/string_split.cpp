@@ -3,7 +3,6 @@
 #include <regex>
 #include <iostream>
 
-#include <benchmark/benchmark.h>
 
 void split1(const std::string &str, std::vector<std::string> &tokens, const char delim)
 {
