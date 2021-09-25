@@ -1,6 +1,7 @@
 #include <regex>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -70,10 +71,27 @@ void test2()
     search_by_regex2("[[:lower:]]?", s);   // 小写字母出现0次或者1次
 }
 
+void test3(){
+    // 忽略大小写
+    regex word_regex("regular expressions?", regex::icase);
+    ifstream file("./content.txt");
+    string line;
+    while (getline(file, line))
+    {
+        auto iter_begin = sregex_iterator(line.begin(), line.end(), word_regex);
+        auto iter_end = sregex_iterator();
+        for(auto iter = iter_begin; iter != iter_end; iter++){
+            cout << iter->str() << endl;
+        }
+    }
+    
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    test1();
-    test2();
+    // test1();
+    // test2();
+    test3();
     return 0;
 }
