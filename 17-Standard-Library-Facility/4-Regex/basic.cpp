@@ -71,7 +71,8 @@ void test2()
     search_by_regex2("[[:lower:]]?", s);   // 小写字母出现0次或者1次
 }
 
-void test3(){
+void test3()
+{
     // 忽略大小写
     regex word_regex("regular expressions?", regex::icase);
     ifstream file("./content.txt");
@@ -80,11 +81,87 @@ void test3(){
     {
         auto iter_begin = sregex_iterator(line.begin(), line.end(), word_regex);
         auto iter_end = sregex_iterator();
-        for(auto iter = iter_begin; iter != iter_end; iter++){
+        for (auto iter = iter_begin; iter != iter_end; iter++)
+        {
             cout << iter->str() << endl;
         }
     }
-    
+}
+void test4()
+{
+    regex word_regex(R"((\d{2})(\d{2})s)");
+    ifstream file("content.txt");
+    string line;
+
+    while (getline(file, line))
+    {
+        auto iter_begin = sregex_iterator(line.begin(),
+                                          line.end(),
+                                          word_regex);
+        auto iter_end = sregex_iterator();
+        for (auto iter = iter_begin; iter != iter_end; iter++)
+        {
+            cout << "Match content: " << iter->str(0) << ",";
+            cout << "group Size: " << iter->size() << endl;
+
+            cout << "Century: " << iter->str(1) << ", ";
+            cout << "length: " << iter->length(1) << ", ";
+
+            cout << "position: " << iter->position(1) << endl;
+            auto year = (*iter)[2];
+            // // cout << "Year: " << iter->str(2) << ", ";
+            cout << "Year: " << year << ", ";
+            cout << "length: " << year.length() << ", ";
+            cout << "position: " << iter->position(2) << endl;
+            cout << endl;
+        }
+    }
+}
+
+void test5()
+{
+    // regex content_regex("\"(.+)\"");
+    regex content_regex("\"(.+)\"");
+
+    ifstream file("content.txt");
+    string line;
+
+    while (getline(file, line))
+    {
+        auto iter_begin = sregex_iterator(line.begin(),
+                                          line.end(),
+                                          content_regex);
+        auto iter_end = sregex_iterator();
+        for (auto iter = iter_begin; iter != iter_end; iter++)
+        {
+            cout << iter->str(0) << endl;
+        }
+    }
+}
+
+void findIn(const char *content, const char *reg_ex)
+{
+    cout << "Search '" << reg_ex << "' in '" << content << "': ";
+    smatch match;
+    string s(content);
+    regex reg(reg_ex);
+    if (regex_search(s, match, reg))
+    {
+        cout << match[0] << endl;
+    }
+    else
+    {
+        cout << "NOTHING" << endl;
+    }
+}
+
+void test6()
+{
+    findIn("123abc", "^\\d+");
+    findIn("abc123", "^\\d+");
+    cout << endl;
+    findIn("some birds", "some\\b");
+    findIn("sometimes wonderful", "some\\b");
 }
 
 int main(int argc, char const *argv[])
@@ -92,6 +169,6 @@ int main(int argc, char const *argv[])
     /* code */
     // test1();
     // test2();
-    test3();
+    test6();
     return 0;
 }
