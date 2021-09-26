@@ -21,7 +21,7 @@ void test2()
     // 按单词读取文件
     ifstream ifs;
     vector<string> vec;
-    ifs.open("Pride and Prejudice.txt");
+    ifs.open("content.txt");
     string str;
     char c;
     while (ifs.get(c))
@@ -48,7 +48,7 @@ void test3()
     // 按行读取文件
     ifstream ifs;
     vector<string> vec;
-    ifs.open("Pride and Prejudice.txt"); //文件地址，注意转义符
+    ifs.open("content.txt"); //文件地址，注意转义符
     string str;
     char delim = ' ';
     while (getline(ifs, str, delim)) // 默认按行读取
@@ -65,7 +65,7 @@ void test4()
 {
     // 一次性读取整个文件
     ifstream fin;
-    fin.open("Pride and Prejudice.txt", ios::in);
+    fin.open("content.txt", ios::in);
     stringstream buf;
     buf << fin.rdbuf();
     string str = buf.str();
@@ -75,7 +75,7 @@ void test4()
 void test5()
 {
     //
-    ifstream fin("Pride and Prejudice.txt");
+    ifstream fin("content.txt");
     char buf[20];
     string str;
     //每次从fin流读取一个单词到buf，buf空间大小需要大于单词长度
@@ -89,7 +89,7 @@ void test5()
 void test6()
 {
     //
-    ifstream fin("Pride and Prejudice.txt");
+    ifstream fin("content.txt");
     char buf[1000];
     while (fin.getline(buf, sizeof(buf)))
     {
@@ -99,7 +99,7 @@ void test6()
 
 void test7()
 {
-    ifstream in("Pride and Prejudice.txt");
+    ifstream in("content.txt");
     // string content((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
     istreambuf_iterator<char> begin(in), end;
     string content(begin, end);
