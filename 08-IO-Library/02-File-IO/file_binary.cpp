@@ -60,22 +60,38 @@ void test4()
 {
     std::vector<unsigned char> data;
     std::ifstream file("shot.png", std::ios::binary);
+
     file.seekg(0, std::ios::end);
     data.resize(file.tellg());
     file.seekg(0);
     file.read(reinterpret_cast<char *>(data.data()), data.size());
+    file.close();
+    cout << sizeof(data) / sizeof(vector<char>);
+
+    ofstream ofs;
+    ofs.open("shotopy.png", ios::binary);
+    // 迭代器写入
     for (auto iter = data.begin(); iter != data.end(); iter++)
+    {
+        ofs.put(*iter);
         cout << *iter;
+    }
 }
 
 void test5()
 {
     ifstream file("shot.png");
-
     vector<unsigned char> data((istreambuf_iterator<char>(file)),
                                istreambuf_iterator<char>());
+
+    ofstream ofs;
+    ofs.open("shotopy.png", ios::binary);
+    // 迭代器写入
     for (auto iter = data.begin(); iter != data.end(); iter++)
+    {
+        ofs.put(*iter);
         cout << *iter;
+    }
 }
 
 int main(int argc, char const *argv[])
