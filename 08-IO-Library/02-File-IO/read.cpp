@@ -100,11 +100,12 @@ void test6()
 void test7()
 {
     ifstream in("content.txt");
-    // string content((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
-    istreambuf_iterator<char> begin(in), end;
-    string content(begin, end);
+    string content((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
+    // istreambuf_iterator<char> begin(in), end;
+    // string content(begin, end);
     cout << content;
 }
+
 
 int main(int argc, char const *argv[])
 {

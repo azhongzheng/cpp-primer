@@ -56,10 +56,32 @@ void test3()
     }
 }
 
+void test4()
+{
+    std::vector<unsigned char> data;
+    std::ifstream file("shot.png", std::ios::binary);
+    file.seekg(0, std::ios::end);
+    data.resize(file.tellg());
+    file.seekg(0);
+    file.read(reinterpret_cast<char *>(data.data()), data.size());
+    for (auto iter = data.begin(); iter != data.end(); iter++)
+        cout << *iter;
+}
+
+void test5()
+{
+    ifstream file("shot.png");
+
+    vector<unsigned char> data((istreambuf_iterator<char>(file)),
+                               istreambuf_iterator<char>());
+    for (auto iter = data.begin(); iter != data.end(); iter++)
+        cout << *iter;
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    test2();
-    test3();
+    // test2();
+    test4();
     return 0;
 }
