@@ -38,14 +38,15 @@ void test2()
 
 void test3()
 {
-    FILE *fp = fopen(filepath, "r");
-    long i = 0;
-    char line[256] = {0};
-    while (fgets(line, 255, fp))
+    ifstream fin(filepath, ios::binary);
+    string line;
+    long lines_cnt = 0;
+    while (getline(fin, line, '\n'))
     {
-        i++;
+        lines_cnt++;
     }
-    cout << "line cnt: " << i << endl;
+    cout << "line cnt: " << lines_cnt << endl;
+    //test3 time :1962.22
 }
 
 int main(int argc, char const *argv[])
