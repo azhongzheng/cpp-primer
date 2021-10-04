@@ -12,7 +12,7 @@ public:
     void func() override { std::cout << "derive class\n"; }
 };
 
-void test1()
+void func_basic_type()
 {
     float f = 1.123;
     double d = 3.1415926535;
@@ -28,7 +28,7 @@ void test1()
     std::cout << "d2:" << d2 << std::endl;
 }
 
-void test2()
+void func_static_cast()
 {
     Derive d;
     d.func();
@@ -37,7 +37,7 @@ void test2()
     base->func();
 }
 
-void test3()
+void func_dynamic_cast()
 {
     Derive d;
     d.func();
@@ -49,7 +49,7 @@ void test3()
     dd->func();
 }
 
-void test4()
+void fun_const_cast()
 {
     int data = 10;
     int test = 20;
@@ -61,7 +61,7 @@ void test4()
     std::cout << data << std::endl;
 }
 
-void test5()
+void func_reinterpret_cast()
 {
     int data = 10;
     int *pi = &data;
@@ -75,7 +75,7 @@ void test5()
 int main(int argc, char const *argv[])
 {
     /* code */
-    test4();
-    test5();
+    fun_const_cast();
+    func_reinterpret_cast();
     return 0;
 }
