@@ -1,5 +1,7 @@
+
+
 #include <iostream>
-#include <new>
+// #include <new>
 
 void test1()
 {
@@ -25,9 +27,20 @@ void test3()
     int *p2 = new (std::nothrow) int;
 }
 
+void test4(){
+    int* p(new int(42));
+    auto q = p;
+    delete p;
+    p = nullptr;
+    delete p;
+    delete p;
+    q = nullptr;
+    // p = nullptr;
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    test2();
+    test4();
     return 0;
 }
