@@ -1,5 +1,5 @@
-#include <memory>
 #include <iostream>
+#include <memory>
 
 void test1()
 {
@@ -13,7 +13,7 @@ void test1()
 void test2()
 {
     std::unique_ptr<std::string> p1(new std::string("hello world"));
-    //p1的所有权转移给p2
+    // p1的所有权转移给p2
     std::unique_ptr<std::string> p2(p1.release());
     std::cout << *p2 << std::endl;
     std::unique_ptr<std::string> p3(new std::string("Trex"));
@@ -23,6 +23,12 @@ void test2()
     std::string *p = p2.release(); //返回一个指针
     std::cout << *p << std::endl;
     delete p;
+}
+
+std::unique_ptr<int>
+clone(int p)
+{
+    return std::unique_ptr<int>(new int(p));
 }
 
 int main(int argc, char const *argv[])
