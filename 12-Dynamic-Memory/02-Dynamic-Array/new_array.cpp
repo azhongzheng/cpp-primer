@@ -33,10 +33,19 @@ void test2()
 
 }
 
+void test3(){
+    std::unique_ptr<int[]> up(new int[10]);
+    for(int i =0; i<10; i++){
+        up[i] = i;
+    }
+    std::cout << up[6] << std::endl;
+    up.release();
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    test1();
-    test2();
+    // test1();
+    test3();
     return 0;
 }
