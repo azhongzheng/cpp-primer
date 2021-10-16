@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 
 void test1()
 {
@@ -13,10 +14,27 @@ void test1()
     std::string val2 = "a value";
     auto result2 = std::find(lst.begin(), lst.end(), val2);
     std::cout << *result2 << std::endl;
+
+    std::string lst3 = "a value";
+    char ch = 'v';
+    auto result3 = std::find(lst3.begin(), lst3.end(), ch);
+    std::cout << *result3 << std::endl;
+}
+
+void test2()
+{
+    std::vector<int> vec = {1, 1, 1, 2, 2, 2, 2, 5, 5, 5, 5, 5};
+    int cnt = std::count(vec.begin(), vec.end(), 2);
+    std::cout << cnt << std::endl;
+
+    std::string lst = "hello world";
+    cnt = std::count(lst.begin(), lst.end(), 'x');
+    std::cout << cnt << std::endl;
 }
 
 int main(int argc, char const *argv[])
 {
     test1();
+    // test2();
     return 0;
 }
