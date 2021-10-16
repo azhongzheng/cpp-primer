@@ -5,11 +5,11 @@
 
 void test1()
 {
-    // accumulate 对数字进行相加
+    // accumulate算法：对数字进行相加
     std::vector<int> vec1 = {1, 2, 4, 8};
     int sum = std::accumulate(vec1.begin(), vec1.end(), 0);
     std::cout << sum << std::endl;
-
+    // accumulate算法：对字符串进行相加
     std::vector<std::string> vec2 = {"nice", "to", "meet", "you"};
     std::string join = "-";
     std::string sum_str = std::accumulate(vec2.begin(), vec2.end(), join);
@@ -17,7 +17,7 @@ void test1()
 }
 
 void test2(){
-    // equal 比较两个容器对应位置的值是否相等
+    // equal算法： 比较两个容器对应位置的值是否相等
     std::vector<int> vec1 = {1, 2, 4, 8};
     std::vector<int> vec2 = {1, 2, 4, 8, 0};
     // bool isqual = std::equal(vec1.begin(), vec1.end(), vec2.begin());
