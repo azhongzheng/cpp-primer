@@ -20,7 +20,6 @@ void test2(){
     // equal算法： 比较两个容器对应位置的值是否相等
     std::vector<int> vec1 = {1, 2, 4, 8};
     std::vector<int> vec2 = {1, 2, 4, 8, 0};
-    // bool isqual = std::equal(vec1.begin(), vec1.end(), vec2.begin());
     if(std::equal(vec1.begin(), vec1.end(), vec2.begin()) && vec1.size()== vec2.size())
         std::cout << "vec1 == vec2" << std::endl;
     else
