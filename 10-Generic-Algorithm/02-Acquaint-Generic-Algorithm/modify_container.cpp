@@ -41,16 +41,38 @@ void test2()
 
 void test3()
 {
+    // back_inserter算法：向容器尾部插入元素
     std::vector<int> vec1(10, 2);
     auto it = std::back_inserter(vec1);
     *it = 42;
     print(vec1);
 }
 
+void test4()
+{
+    //copy算法：将一个容器中的元素拷贝到另一个容器
+    int a1[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int a2[sizeof(a1) / sizeof(*a1)];
+    print(a1);
+    print(a2);
+    auto ret = std::copy(std::begin(a1), std::end(a1), a2);
+    print(a2);
+    std::cout << *ret;
+}
+
+void test5()
+{   // replace算法：对容器内的元素进行替换
+    std::vector<int> vec(10, 2);
+    std::replace(vec.begin(), vec.begin()+3, 2, 10);
+    print(vec);
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
     // test2();
-    test3();
+    // test3();
+    // test4();
+    test5();
     return 0;
 }
