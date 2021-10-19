@@ -1,6 +1,14 @@
 #include <iostream>
 #include <vector>
 
+template <typename T>
+void print(T &t)
+{
+    for (auto i : t)
+        std::cout << i << " ";
+    putchar('\n');
+}
+
 void test1()
 {
     //值捕获
@@ -49,7 +57,6 @@ void biggies(std::vector<std::string> &words,
 
     std::for_each(wc, words.end(), [&, c](std::string &s)
                   { os << s << c; });
-
     putchar('\n');
 }
 
@@ -61,7 +68,6 @@ void test3()
 
 void test4()
 {
-    //值捕获
     int v1 = 42;
     auto f = [v1]() mutable
     {
@@ -73,7 +79,6 @@ void test4()
 
 void test5()
 {
-    //引用捕获
     int v1 = 42;
     auto f = [&v1]() mutable
     {
@@ -82,9 +87,26 @@ void test5()
     v1 = 0;
     std::cout << f() << std::endl;
 }
+
+void test6()
+{
+    // 返回值类型
+    std::vector<int> vi = {-1, 9, -3, 5, 9, -7, 2};
+    // std::transform(vi.begin(), vi.end(), vi.begin(), [](int i)
+    //                { return i < 0 ? -i : i; });
+    std::transform(vi.begin(), vi.end(), vi.begin(), [](int i) -> int
+                   {
+                       if (i < 0)
+                           return -i;
+                       else
+                           return i;
+                   });
+    print(vi);
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    test5();
+    test6();
     return 0;
 }
