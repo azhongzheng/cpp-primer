@@ -54,23 +54,35 @@ void test4()
     putchar('\n');
 }
 
+// void test5()
+// {
+//     std::istream_iterator<Sales_data> item_iter(std::cin), eof;
+//     std::ostream_iterator<Sales_data> out_iter(std::cout, "\n");
+//     Sales_data sum = *item_iter++;
+//     while (item_iter != eof)
+//     {
+//         if (item_iter->isbn() == sum.isbn())
+//         {
+//             sum = *item_iter++;
+//         }
+//         else{
+//             out_iter = sum;
+//             sum = *item_iter++;
+//         }
+//     }
+//     out_iter = sum;
+// }
+
 void test5()
 {
-    std::istream_iterator<Sales_data> item_iter(std::cin), eof;
-    std::ostream_iterator<Sales_data> out_iter(std::cout, "\n");
-    Sales_data sum = *item_iter++;
-    while (item_iter != eof)
+    std::vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    for (auto r_iter = vec.crbegin(); r_iter != vec.crend(); r_iter++)
     {
-        if (item_iter->isbn() == sum.isbn())
-        {
-            sum = *item_iter++;
-        }
-        else{
-            out_iter = sum;
-            sum = *item_iter++;
-        }
+        std::cout << *r_iter << "\n";
     }
-    out_iter = sum;
+
+    std::sort(vec.rbegin(), vec.rend());
+    print(vec);
 }
 
 int main(int argc, char const *argv[])
