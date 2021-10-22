@@ -85,10 +85,21 @@ void test5()
     print(vec);
 }
 
+void test6()
+{
+    std::string line = "FIRST,SECOND,LAST";
+    auto comma = std::find(line.cbegin(), line.cend(), ',');
+    std::cout << std::string(line.cbegin(), comma) << std::endl;
+    auto rcomma = std::find(line.crbegin(), line.crend(), ',');
+    std::cout << std::string(line.crbegin(), rcomma) << std::endl;
+    std::cout << std::string(rcomma.base(), line.cend()) << std::endl;
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
     // test1();
-    test5();
+    // test5();
+    test6();
     return 0;
 }
