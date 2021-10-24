@@ -35,8 +35,15 @@ void test2()
     }
 }
 
+void test3(){
+    std::map<std::string, int > word_count;
+    word_count.insert({"hello", 5});
+    word_count.insert({"world", 3});
+    std::cout<< word_count["hello"] << "\n";
+}
+
 int main(int argc, char const *argv[])
 {
-    test2();
+    test3();
     return 0;
 }
