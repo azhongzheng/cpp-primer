@@ -14,9 +14,8 @@ template <typename T>
 void print_map(T &t)
 {
     for (auto i : t)
-    {
         std::cout << i.first << ": " << i.second << "\n";
-    }
+    putchar('\n');
 }
 
 void add()
@@ -66,7 +65,8 @@ void remove()
     print_map(authors);
 }
 
-void modify(){
+void modify()
+{
     std::map<std::string, int> word_count = {{"key1", 1},
                                              {"key2", 2},
                                              {"key3", 3},
@@ -76,19 +76,52 @@ void modify(){
     putchar('\n');
     word_count["key1"] = 11;
     print_map(word_count);
+}
 
-    std::set<int> iset = {1, 2, 3, 4, 5, 6, 7, 8};
-   
+void query()
+{
+    std::set<int> iset = {1, 1, 2, 3, 4, 5, 6, 7, 8};
+    std::set<int> miset = {1, 1, 1, 1, 2, 2, 2, 3, 4, 5, 6, 7, 8};
+    std::cout << "*iset.find(2)" << *iset.find(2) << "\n";
+    std::cout << "*iset.find(20)" << *iset.find(20) << "\n";
+    std::cout << "iset.count(1)" << iset.count(1) << "\n";
+    std::cout << "iset.count(11) " << iset.count(11) << "\n";
 
- }
+    std::cout << "*miset.find(2): " << *miset.find(2) << "\n";
+    std::cout << "*miset.find(20): " << *miset.find(20) << "\n";
+    std::cout << "miset.count(2): " << miset.count(2) << "\n";
+    std::cout << "miset.count(11): " << miset.count(11) << "\n";
 
-void query(){
+    std::multimap<std::string, std::string> authors = {{"bob", "book1"},
+                                                       {"bob", "book2"},
+                                                       {"alice", "book1"},
+                                                       {"bob", "book3"},
+                                                       {"alice", "book2"}};
 
+    auto entries = authors.count("bob");
+    auto iter = authors.find("bob");
+    std::cout << "entries: " << entries << "\n";
+
+    std::cout << "iter: "
+              << iter->first << ":"
+              << iter->second << "\n";
+
+    while (entries)
+    {
+        std::cout << iter->second << "\n";
+        --entries;
+    }
+    for (auto beg = authors.lower_bound("bob"), end = authors.upper_bound("bob"); beg != end; beg++)
+    {
+        std::cout << "iter: " << beg->second << std::endl;
+    }
+    for (auto pos = authors.equal_range("bob"); pos.first != pos.second; pos.first++)
+        std::cout << "pos: " << pos.first->second << std::endl;
 }
 
 int main(int argc, char const *argv[])
 {
     /* code */
-    modify();
+    query();
     return 0;
 }
