@@ -14,8 +14,9 @@ void test1()
 
 void test2()
 {
-    std::vector<std::pair<const std::string, size_t>> word_count;
-    word_count.push_back({"key", 4});
+    // std::vector<std::pair<const std::string, size_t>> word_count;
+    std::map<std::string, int> word_count;
+    word_count.insert({"key", 4});
     auto map_it = word_count.begin();
     std::cout << map_it->first << " " << map_it->second << "\n";
     // map_it->first = "new_key"; //不可以改变？
@@ -25,15 +26,17 @@ void test2()
 
 void test3()
 {
-    std::set<int> iset = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    std::set<int> iset = {0,3,1,0,8,3,6};
     auto set_it = iset.begin();
     // *set_it = 43;
+    auto value = iset.find(3);
     std::cout << *set_it << "\n";
+    std::cout << *value << "\n";
 }
 
 int main(int argc, char const *argv[])
 {
     /* code */
-    test3();
+    test2();
     return 0;
 }
