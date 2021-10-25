@@ -16,7 +16,7 @@ std::pair<std::string, int> process(std::vector<std::string> &v)
     if (!v.empty())
         return {v.back(), v.size()};
     else if (v.size() == 10)
-        return std::make_pair<std::string, int>(v.back(), v.size());
+        return std::make_pair(v.back(), v.size());
     else
         return std::pair<std::string, int>();
 }
