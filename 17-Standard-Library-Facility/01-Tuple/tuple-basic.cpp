@@ -3,7 +3,7 @@
 using namespace std;
 void test1()
 {
-    tuple<size_t, size_t, size_t> tp1;
+    tuple<size_t, size_t, size_t> tp1(1,1,1);
     tp1 = make_tuple(1, 2, 3);
     tuple<int, string, double> tp2(10, "hello world", 10.1);
     cout << "tp2第二个元素的值: " << get<0>(tp2) << endl;
