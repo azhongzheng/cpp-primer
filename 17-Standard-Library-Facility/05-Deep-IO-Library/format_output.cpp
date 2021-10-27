@@ -45,8 +45,6 @@ void test3()
     std::cout << "Precision: " << std::cout.precision() << ", Value: " << sqrt(2.0) << std::endl;
 }
 
-
-
 void test4()
 {
     // 输出补白
@@ -74,10 +72,25 @@ void test4()
               << "d: " << std::setw(12) << d << "next cool\n";
 }
 
+void test6()
+{
+    std::string s = "a b   s\nd";
+    // std::cout << s;
+    std::stringstream ss(s);
+    char ch;
+    ss >> std::noskipws;
+    while (ss >> ch)
+    {
+       std::cout << ch;
+    }
+    
+}
+
 int main(int argc, char const *argv[])
 {
     // test1();
     // test2();
     // test4();
+    test6();
     return 0;
 }
