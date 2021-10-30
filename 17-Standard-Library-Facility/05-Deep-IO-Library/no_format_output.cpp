@@ -28,5 +28,6 @@ int main(int argc, char const *argv[])
 {
     /* code */
     test2();
+    std::cout << EOF;
     return 0;
 }
