@@ -9,7 +9,7 @@ struct NoCopy
 int main(int argc, char const *argv[])
 {
     NoCopy nocopy;
-    // auto nocopy2 = nocopy;
-    // auto p3(nocopy);
+    // auto p1 = nocopy;
+    // auto p2(nocopy);
     return 0;
 }
