@@ -1,5 +1,6 @@
 #include "HasPtr.hpp"
 #include <iostream>
+#include <vector>
 
 HasPtr f(HasPtr hp)
 {
@@ -9,10 +10,12 @@ HasPtr f(HasPtr hp)
     return ret;
 }
 
+
 int main(int argc, char const *argv[])
 {
     /* code */
     HasPtr hasptr = HasPtr();
     auto f1 = f(hasptr);
+    std::vector<int> v;
     return 0;
 }
