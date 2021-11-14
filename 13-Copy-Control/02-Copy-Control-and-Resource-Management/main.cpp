@@ -13,7 +13,6 @@ HasPtr f(HasPtr hp)
 
 int main(int argc, char const *argv[])
 {
-    /* code */
     HasPtr hasptr = HasPtr();
     auto f1 = f(hasptr);
     std::vector<int> v;
