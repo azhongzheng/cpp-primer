@@ -33,5 +33,7 @@ inline void swap(HasPtr &lhs, HasPtr &rhs)
 HasPtr &HasPtr::operator=(HasPtr &rhs)
 {
     swap(*this, rhs);
+
+
     return *this;
 }
