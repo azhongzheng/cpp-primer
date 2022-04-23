@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 function traverse_dir() {
     allfile=$(ls "$1")
