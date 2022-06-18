@@ -1,0 +1,1 @@
+reference: https://paul.pub/cpp-concurrency/#id-raii
