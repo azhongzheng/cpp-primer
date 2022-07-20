@@ -3,7 +3,6 @@
 #include <regex>
 #include <iostream>
 
-
 void split1(const std::string &str, std::vector<std::string> &tokens, const char delim)
 {
     tokens.clear();
@@ -62,6 +61,24 @@ void split4(const std::string &str, std::vector<std::string> &tokens, const std:
     tokens.assign(v.begin(), v.end());
 }
 
+std::vector<std::string> split(const std::string &str, const std::string &delim)
+{
+    std::vector<std::string> res;
+    size_t pos = 0;
+    while (true)
+    {
+        size_t new_pos = str.find_first_of(delim, pos);
+        if(new_pos == str.npos){
+            res.push_back(str.substr(pos, new_pos));
+            break;
+        }
+        res.push_back(str.substr(pos, new_pos-pos));
+        pos = new_pos + 1;
+    }
+    
+    return res;
+}
+
 int main(int argc, char const *argv[])
 {
     std::vector<std::string> v = {"hello", "world"};
@@ -79,6 +96,12 @@ int main(int argc, char const *argv[])
     }
 
     std::cout << str.substr() << "\n";
+
+    std::string str3 = "hello world, kangkang\n nice";
+    auto v3 = split(str3, std::string("\n ,"));
+    for(auto i: v3){
+        std::cout << i << " ";
+    }
 
     return 0;
 }
