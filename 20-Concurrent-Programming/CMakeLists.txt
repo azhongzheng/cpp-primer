@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 
+
 add_executable(01_hello_thread               01_hello_thread.cpp)
 add_executable(02_lambda_thread              02_lambda_thread.cpp)
 add_executable(03_thread_argument            03_thread_argument.cpp)
