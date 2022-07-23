@@ -41,10 +41,18 @@ void test4(){
     std::cout << sv << std::endl;
 }
 
+void test5(){
+    std::string s = "你好";
+    std::wstring ws = L"你好1世界";
+    std::cout << s << s.size() << std::endl;
+    std::cout << ws.size() << std::endl;
+    std::wcout << ws ;
+}
+
 int main(int argc, char const *argv[])
 {
     // test1();
     // test2();
-    test4();
+    test5();
     return 0;
 }
