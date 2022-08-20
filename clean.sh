@@ -1,33 +1,54 @@
 #!/usr/bin/env bash
 
 function traverse_dir() {
-    allfile=$(ls "$1")
+    allfile=$(ls -a "$1")
+
     for file in $allfile; do
-        if [ -d "$1"/"$file" ]; then
-            traverse_dir "$1"/"$file"
+        abs_path="$1/$file"
+        # 忽略当前目录、上级目录和git目录
+        if [ "$file" == "." ] || [ "$file" == ".." ] || [ "$file" == ".git" ]; then
+            continue
+        elif [ -d "$abs_path" ]; then
+            echo "$abs_path"
+            traverse_dir "$abs_path"
         else
-            echo "$1"/"$file"
+            echo "$abs_path"
         fi
     done
 }
 
-function delete_obj_file() {
+function delete_file() {
     if [ ! -d "$1" ]; then
-        basename=$(basename "$1")
-        selfname=$(basename "$0")
-        # 判断是否是可执行文件并且不是本身
-        if [ -x "$1" ] && [ "$basename" != "$selfname" ]; then
+        # 删除编译生成的文件
+        if objdump -d "$1" >/dev/null 2>&1; then
+            echo "清理文件" "$1"
+            rm -rf "$1"
+        # 删除 .DS_Store
+        elif [ "$(basename "$1")" == ".DS_Store" ]; then
+            echo "清理文件" "$1"
             rm -rf "$1"
         fi
-        return
     fi
 }
 
-clean_path=$(cd "$(dirname "$0")" || exit;pwd)
-echo "清理""$clean_path""目录下的可执行文件"
+function delete_dir() {
+    if [ -d "$1" ]; then
+        if [ "$(basename "$1")" == "build" ]; then
+            echo "清理目录" "$1"
+            rm -rf "$1"
+        fi
+    fi
+}
+
+clean_path=$(
+    cd "$(dirname "$0")" || exit
+    pwd
+)
+echo "清理""$clean_path""目录下的垃圾文件"
 allfile=$(traverse_dir "$clean_path")
 
 for file in $allfile; do
-    delete_obj_file "$file"
+    delete_file "$file"
+    delete_dir "$file"
 done
 
