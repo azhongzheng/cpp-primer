@@ -12,7 +12,7 @@ static std::mutex exclusive;
 void concurrent_worker(int min, int max)
 {
     double tmp_sum = 0;
-    for (int i = min; i < max; i++)
+    for (int i = min; i <= max; i++)
     {
         tmp_sum += sqrt(i);
     }

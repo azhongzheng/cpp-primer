@@ -9,7 +9,7 @@ static double sum = 0;
 
 void worker(int min, int max)
 {
-    for (int i = min; i < max; i++)
+    for (int i = min; i <= max; i++)
     {
         sum += sqrt(i);
     }

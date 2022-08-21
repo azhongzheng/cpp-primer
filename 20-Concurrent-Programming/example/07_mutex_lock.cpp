@@ -10,7 +10,7 @@ static double sum = 0;
 static std::mutex exclusive;
 
 void concurrent_worker(int min, int max){
-    for (int i = min; i < max; i++)
+    for (int i = min; i <= max; i++)
     {
         exclusive.lock();
         sum += sqrt(i);
