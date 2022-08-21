@@ -42,11 +42,16 @@ public:
 
     bool transferMoney(Account *accountA, Account *accountB, double amount)
     {
-        // std::lock_guard guardA(*accountA->getLock());
-        // std::lock_guard guardB(*accountB->getLock());
+
         std::lock(*accountA->getLock(), *accountB->getLock());
         std::lock_guard lockA(*accountA->getLock(), std::adopt_lock);
         std::lock_guard lockB(*accountB->getLock(), std::adopt_lock);
+
+        // std::unique_lock lockA(*accountA->getLock(), std::defer_lock);
+        // std::unique_lock lockB(*accountB->getLock(), std::defer_lock);
+        // std::lock(*accountA->getLock(), *accountB->getLock());
+
+        // std::scoped_lock lockAll(*accountA->getLock(), *accountB->getLock());
 
         if (amount > accountA->getMoney())
         {
@@ -72,6 +77,8 @@ private:
     std::set<Account *> mAccounts;
 };
 
+std::mutex sCountLock;
+
 void randomTransfer(Bank *bank, Account *accountA, Account *accountB)
 {
     while (true)
@@ -79,15 +86,19 @@ void randomTransfer(Bank *bank, Account *accountA, Account *accountB)
         double randomMoney = ((double)rand() / RAND_MAX) * 100;
         if (bank->transferMoney(accountA, accountB, randomMoney))
         {
+            sCountLock.lock();
             std::cout << "Transfer " << randomMoney << " from " << accountA->getName()
                       << " to " << accountB->getName()
                       << ", Bank totalMoney: " << bank->totalMoney() << std::endl;
+            sCountLock.unlock();
         }
         else
         {
+            sCountLock.lock();
             std::cout << "Transfer failed, "
                       << accountA->getName() << " has only $" << accountA->getMoney() << ", but "
                       << randomMoney << " required" << std::endl;
+            sCountLock.unlock();
         }
     }
 }

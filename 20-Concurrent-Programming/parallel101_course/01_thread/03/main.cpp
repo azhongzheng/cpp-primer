@@ -10,6 +10,7 @@ void download(std::string file)
                   << " (" << i * 10 << "%)..." << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(400));
     }
+    std::cout << "Download complete: " << file << std::endl;
 }
 
 void interact()

@@ -5,7 +5,7 @@ struct C
     C();                       // 默认构造函数
     C(C const &c);             // 拷贝构造函数
     C(&&c);                    // 移动构造函数
-    C &operator=(C const &c);  // 移动赋值函数
+    C &operator=(C const &c);  // 拷贝赋值函数
     C &operator=(C const &&c); // 移动赋值函数
     ~C();
 };
