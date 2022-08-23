@@ -14,6 +14,7 @@ void download(std::string file)
     std::cout << "Download complete: " << file << std::endl;
 }
 
+
 void interact()
 {
     std::string name;
@@ -21,18 +22,22 @@ void interact()
     std::cout << "Hi," << name << std::endl;
 }
 
-std::vector<std::thread> pool;
 
-void myfunc(){
-    std::thread t1([]
-                   { download("hello.zip"); });
-    pool.push_back( std::move(t1));
+std::vector<std::jthread> pool;
+
+void myfunc() {
+    std::jthread t1([&] {
+        download("hello.zip");
+    });
+    // 移交控制权到全局的 pool 列表，以延长 t1 的生命周期
+    pool.push_back(std::move(t1));
 }
+
 
 int main(int argc, char const *argv[])
 {
     myfunc();
     interact();
-    for(auto &t:pool) t.join();
+
     return 0;
 }

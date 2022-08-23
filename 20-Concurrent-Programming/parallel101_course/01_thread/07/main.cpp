@@ -14,6 +14,20 @@ void download(std::string file)
     std::cout << "Download complete: " << file << std::endl;
 }
 
+class ThreadPool{
+public:
+    void push_back(std::thread thr){
+        m_pool.push_back(std::move(thr));
+    }
+    ~ThreadPool(){
+        for(auto &t: m_pool)
+            t.join();
+    }
+private:
+    std::vector<std::thread> m_pool;
+
+};
+ThreadPool tpool;
 void interact()
 {
     std::string name;
@@ -21,18 +35,18 @@ void interact()
     std::cout << "Hi," << name << std::endl;
 }
 
-std::vector<std::thread> pool;
+
 
 void myfunc(){
     std::thread t1([]
                    { download("hello.zip"); });
-    pool.push_back( std::move(t1));
+    tpool.push_back( std::move(t1));
 }
 
 int main(int argc, char const *argv[])
 {
     myfunc();
     interact();
-    for(auto &t:pool) t.join();
+
     return 0;
 }
