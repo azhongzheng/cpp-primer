@@ -25,6 +25,8 @@ int main(int argc, char const *argv[])
         return download("hello.zip"); 
     });
     interact();
+    fret.wait();
+    std::cout << "Wait return!" << std::endl;
     int ret = fret.get();
     std::cout << "Download result: " << ret << std::endl;
     
