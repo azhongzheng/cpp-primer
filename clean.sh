@@ -33,7 +33,9 @@ function delete_file() {
 
 function delete_dir() {
     if [ -d "$1" ]; then
-        if [ "$(basename "$1")" == "build" ]; then
+        if [ "$(basename "$1")" == "build" ] ||
+            [ "$(basename "$1")" == "cmake-build-debug" ] ||
+            [ "$(basename "$1")" == "cmake-build-release" ]; then
             echo "清理目录" "$1"
             rm -rf "$1"
         fi
@@ -51,4 +53,3 @@ for file in $allfile; do
     delete_file "$file"
     delete_dir "$file"
 done
-

@@ -1,5 +1,4 @@
 */*/main
-
 */main
 main
 common.cpp
@@ -8,3 +7,4 @@ common.cpp
 .DS_Store
 a.out
 build/
+cmake-build-debug
