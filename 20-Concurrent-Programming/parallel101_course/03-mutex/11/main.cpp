@@ -1,6 +1,6 @@
 #include <cstdio>
-#include <thread>
 #include <mutex>
+#include <thread>
 
 int main() {
     std::mutex mtx;
