@@ -1,4 +1,4 @@
 ---
 Language:        Cpp
-BasedOnStyle:  google
+BasedOnStyle:  LLVM
 IndentWidth: 4
