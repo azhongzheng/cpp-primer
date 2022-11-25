@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <numeric>
-#include "Sales_data.h"
+// #include "Sales_data.h"
 
 template <typename T>
 void print(T &t)

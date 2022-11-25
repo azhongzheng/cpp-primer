@@ -1,3 +1,5 @@
+#pragma once
+#include <cstddef>
 #include <initializer_list>
 #include <memory>
 #include <string>
@@ -36,7 +38,7 @@ template <typename T> T &Blob<T>::back() {
 
 template <typename T> T &Blob<T>::operator[](size_type i) {
     check(0, "subscript out of range");
-    return data->back();
+    return (*data)[i];
 }
 
 template <typename T> void Blob<T>::pop_back() {
@@ -50,3 +52,19 @@ Blob<T>::Blob() : data(std::make_shared<std::vector<T>>()) {}
 template <typename T>
 Blob<T>::Blob(std::initializer_list<T> il)
     : data(std::make_shared<std::vector<T>>(il)) {}
+
+
+
+// template <typename T>
+// BlobPtr<T> BlobPtr<T>:: {
+//     BlobPtr ret = *this;
+//     ++*this;
+//     return ret;
+// }
+
+// template <typename T>
+// T &Blob<T>::operator[](size_type i){
+//     check(0, "subscript out of range");
+//     return (*data)[i];
+// }
+
