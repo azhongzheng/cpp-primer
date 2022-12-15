@@ -3,13 +3,15 @@
 #include <iostream>
 #include <iterator>
 
-template <typename T> int compare(const T &v1, const T &v2) {
+template <typename T>
+int compare(const T &v1, const T &v2) {
     if (*v1 == *v2)
         return 0;
     else
         return *v1 < *v2 ? -1 : 1;
 }
-template <typename T> int compare_less(const T &v1, const T &v2) {
+template <typename T>
+int compare_less(const T &v1, const T &v2) {
     if (std::less<T>()(v1, v2)) {
         return -1;
     }
@@ -24,7 +26,8 @@ int compare_str(const char (&p1)[N], const char (&p2)[M]) {
     return strcmp(p1, p2);
 }
 
-template <typename T> T foo(T *p) {
+template <typename T>
+T foo(T *p) {
     T temp = *p;
     return temp;
 }
